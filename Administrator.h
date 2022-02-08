@@ -38,6 +38,7 @@ public:
     Administrator& operator=(const Administrator& administrator);
     bool operator==(const Administrator& admin) const;
     bool operator!=(const Administrator& admin) const;
+    /*
     //admin functions
     void createMembers(DataManagementSystem& dataBase);
     bool editMembers(DataManagementSystem& dataBase);
@@ -52,6 +53,7 @@ public:
     bool editRoadMap(DataManagementSystem& dataBase);
     bool deleteRoadMap(DataManagementSystem& dataBase);
     bool editTimeline(RoadMap& map);
+    */
     //other functions
     string getMemberInfo() const override;
 };

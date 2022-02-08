@@ -25,7 +25,7 @@ public:
     //search functions
     bool searchTeam(const string& teamID) const;
     //Testor functions
-    bool changeItemStaus();//add parameters
+    bool changeItemStaus(const string& newStatus, Item& item);
     Bug createBug();//add parameters
     //print functions
     void print() const override;

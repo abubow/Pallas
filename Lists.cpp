@@ -720,3 +720,19 @@ Lists<T>& Lists<T>::operator- (const T* items) const
     return temp;
 }
 
+template <class T>
+std::string Lists<T>::toString() const
+{
+    stringstream ss;
+    ss << "{";
+    for (int i = 0; i < size; i++)
+    {
+        ss << list[i];
+        if (i != size - 1)
+        {
+            ss << ", ";
+        }
+    }
+    ss << "}";
+    return ss.str();
+}

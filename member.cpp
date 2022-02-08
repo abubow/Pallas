@@ -61,7 +61,7 @@ void Member::setExperience(const string& experience){
 void Member::setPFP(const string& pfpURL){
     this->pfpURL = pfpURL;
 }
-void Member::setMemberID(const string& memberID){
+void Member::setID(const string& memberID){
     this->memberID = memberID;
 }
 //getters
@@ -89,7 +89,7 @@ string Member::getExperience() const{
 string Member::getPFP() const{
     return pfpURL;
 }
-string Member::getMemberID() const{
+string Member::getID() const{
     return memberID;
 }
 //print functions

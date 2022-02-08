@@ -5,19 +5,17 @@
 #include"Backlog.h"
 #include"Team.h"
 #include"Sprint.h"
+#include"Lists.h"
+#include"EditLog.h"
 class ProductOwner :
     public Member
 {
 protected:
-    string* listOfAssignedTeams;
-    int assignedTeamCount;
-    string* listOfAssignedProjects;
-    int assignedProjectCount;
+    Lists<string> assignedTeams;
+    Lists<string> assignedProjects;
     string type;
-    string* listOfTeams;
-    string* editLog;
-    int editLogCount;
-    int teamCount;
+    Lists<string> teams;
+    Lists<EditLog> editLog;
 public:
     ProductOwner();
     ProductOwner(const ProductOwner&);
@@ -35,37 +33,29 @@ public:
     bool editEditLogEntry(const string& logEntryID);
     bool removeEditLogEntry(const string& logEntryID);
     //setters
-    void setAssignedTeamCount(int count);
-    void setAssignedProjectCount(int count);
-    void setTeamsCount(int count);
-    void setEditLogCount(int count);
-    void setlistOfAssignedTeams(const string* listOfTeams);
-    void setlistOfAssignedProjects(const string* listOfProjects);
-    void setlistOfTeams(const string* listOfTeams);
-    void setEditLog(const string* editLog);
+    void setAssignedTeams(const string* listOfTeams, int listOfTeamsCount);
+    void setAssignedProjects(const string* listOfProjects, int listOfProjectsCount);
+    void setTeams(const string* listOfTeams, int listOfTeamsCount);
+    void setEditLog(const EditLog* editLog, int editLogCount);
     void setType(const string& type);
     //getters
-    const string* getListOfAssignedTeams() const;
-    const string* getListOfAssignedProjects() const;
-    const string* getListOfTeams() const;
-    const string* getEditLog() const;
+    Lists<string> getAssignedTeams() const;
+    Lists<string> getAssignedProjects() const;
+    Lists<string> getTeams() const;
+    Lists<EditLog> getEditLog() const;
     int getAssignedTeamCount() const;
     int getAssignedProjectCount() const;
     int getTeamsCount() const;
     int getEditLogCount() const;
+    string getType() const;
     //search functions
     bool searchEditLog(const string& editLog) const;
     bool searchProject(const string& projectID) const;
-    bool searchAssignedItem(const string& itemID) const;
     bool searchAssignedProject(const string& projectID) const;
     //print functions
     void print() const override;
     void print(const string& fileName) const override;
     void print(ofstream& out) const override;
-    void printProjects() const;
-    void printAssignedItems() const;
-    void printAssignedProjects() const;
-    void printEditLog() const;
     //operator overloads
     ProductOwner& operator=(const ProductOwner&);
     bool operator==(const ProductOwner&) const;

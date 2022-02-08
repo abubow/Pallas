@@ -65,6 +65,8 @@ public:
     //insertion operator overloads
     friend std::istream& operator>>(std::istream& in, Lists& list);
     friend std::ifstream& operator>>(std::ifstream& in, Lists& list);
+    //type conversion operator overloads
+    operator T*() const;
     //search functions
     bool search(const T&) const;
     bool search(const T*, int) const;
@@ -83,5 +85,28 @@ public:
     bool isSorted(int start, int end) const;
     void merge(const Lists&);
     void merge(const Lists&, int start, int end);
+    std::string toString() const;
 };
+
+//search functions
+template<class T>
+inline bool searchInListByID(const Lists<T> item, const std::string& itemID){
+    bool found=false;
+    for(int i=0;i<item.getSize();i++){
+        if(item.get(i).getID()==itemID){
+            found=true;
+            break;
+        }
+    }
+}
+//remove by ID
+template<class T>
+inline void removeFromListByID(Lists<T>& item, const std::string& itemID){
+    for(int i=0;i<item.getSize();i++){
+        if(item.get(i).getID()==itemID){
+            item.remove(i);
+            break;
+        }
+    }
+}
 #endif // !LIST_H

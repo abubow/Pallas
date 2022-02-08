@@ -115,6 +115,16 @@ void Administrator::print(const string& fileName) const
     }
     outFile.close();
 }
+void Administrator::print(ofstream& file) const
+{
+    file << "Administrator" << endl;
+    Member::print(file);
+    file << "Edit Log: " << endl;
+    for(int i = 0; i < editLogCount; i++)
+    {
+        file << editLog[i] << endl;
+    }
+}
 //overloaded operators
 Administrator& Administrator::operator=(const Administrator& admin)
 {

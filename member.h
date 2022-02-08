@@ -31,7 +31,7 @@ public:
     void setDescription(const string& description);
     void setExperience(const string& experience);
     void setPFP(const string& pfpURL);
-    void setMemberID(const string& memberID);
+    void setID(const string& memberID);
     //getters
     string getName() const;
     string getEmail() const;
@@ -41,7 +41,7 @@ public:
     string getDescription() const;
     string getExperience() const;
     string getPFP() const;
-    string getMemberID() const;
+    string getID() const;
     //print functions
     virtual void print() const;
     virtual void print(const string& fileName) const;
