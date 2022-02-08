@@ -1,7 +1,7 @@
 #ifndef MANAGER_HR_H
 #define MANAGER_HR_H
 #include "member.h"
-extern class DataMangementSysten;
+//#include "DataManagementSystem.h"
 class Manager_HR :
     public Member
 {
@@ -52,9 +52,12 @@ public:
     bool searchAssignedTeam(const string& teamID) const;
     bool searchAssignedProject(const string& projectID) const;
     //Manager Functions
-    bool addMember(DataMangementSysten&);
-    bool editMember(DataMangementSysten&);
-    bool deleteMember(DataMangementSysten&);
+    /*template<class T>
+    bool addMember(DataManagementSystem&, T&);
+    template<class T>
+    bool editMember(DataManagementSystem&, T&);
+    template<class T>
+    bool removeMember(DataManagementSystem&, T&);*/
     //other functions
     string getMemberInfo() const override;
 };

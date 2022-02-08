@@ -2,11 +2,13 @@
 #define TEAM_H
 #pragma once
 #include <iostream>
+#include <fstream>
+#include "Lists.h"
 class Team
 {
 protected:
-	std::string TeamID;
-	std::string* memberIDs;
+	std::string teamID;
+	Lists<std::string> memberIDs;
 	std::string leaderID;
 public:
 	Team();
@@ -24,6 +26,8 @@ public:
 	const std::string& getTeamID() const;
 	const std::string& getLeaderID() const;
 	const std::string* getMemberIDs() const;
+	const Lists<std::string>& getMemberIDsList() const;
+	const std::string& getMemberID(int index) const;
 	int getSize() const;
 	//print functions
 	void print() const;
@@ -48,5 +52,9 @@ public:
 	bool operator!=(const Team&) const;
 	std::string& operator[](int index) const;
 	//extraction operator overloads
+	friend std::ostream& operator<<(std::ostream& out, const Team& team);
+	friend std::istream& operator>>(std::istream& in, Team& team);
+	friend std::ifstream& operator>>(std::ifstream& in, Team& team);
+	friend std::ofstream& operator<<(std::ofstream& out, const Team& team);
 };
 #endif // !TEAM_H

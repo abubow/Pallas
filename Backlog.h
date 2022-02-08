@@ -25,8 +25,8 @@ public:
 	bool addItem(const Item& item);
 	bool editItem(const Item& item);
 	bool removeItem(const Item& item);
-	bool addDependecy(const Item& item);
-	bool removeDependecy(const Item& item);
+	//bool addDependecy(const Item& item);
+	//bool removeDependecy(const Item& item);
 	bool addEditLogEntry(const EditLog& logEntryID);
 	bool editEditLogEntry(const EditLog& logEntryID);
 	bool removeEditLogEntry(const std::string& logEntryID);
@@ -39,6 +39,8 @@ public:
 	const Lists<Item>& getItems() const;
 	const Lists<EditLog>& getEditLog() const;
 	const std::string& getBacklogID() const;
+	const Item& getItem(const std::string& itemID) const;
+	const EditLog& getEditLogEntry(const std::string& logEntryID) const;
 	//search functions
 	bool searchItem(const std::string& itemID) const;
 	bool searchEditLog(const std::string& editLog) const;
@@ -57,12 +59,14 @@ public:
 	bool operator==(const Backlog&) const;
 	bool operator!=(const Backlog&) const;
 	//friend functions
-	friend ostream& operator<<(ostream&, const Backlog&);
-	friend istream& operator>>(istream&, Backlog&);
-	friend ofstream& operator<<(ofstream&, const Backlog&);
-	friend ifstream& operator>>(ifstream&, Backlog&);
+	friend std::ostream& operator<<(std::ostream&, const Backlog&);
+	friend std::istream& operator>>(std::istream&, Backlog&);
+	friend std::ofstream& operator<<(std::ofstream&, const Backlog&);
+	friend std::ifstream& operator>>(std::ifstream&, Backlog&);
 	//print functions
 	void print() const;
+	void print(std::string fileName) const;
+	void print(std::ofstream&) const;
 	//virtual function
 	virtual void finish(Backlog& moveBack);
 };

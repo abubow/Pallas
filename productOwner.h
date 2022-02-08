@@ -29,7 +29,7 @@ public:
     bool addAssignedProject(const string& ProjectID);
     bool editAssignedProject(const string& ProjectID);
     bool removeAssignedProject(const string& ProjectID);
-    bool addEditLogEntry(const string& logEntryID);
+    bool addEditLogEntry(const EditLog& logEntryID);
     bool editEditLogEntry(const string& logEntryID);
     bool removeEditLogEntry(const string& logEntryID);
     //setters

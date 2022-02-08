@@ -46,7 +46,7 @@ public:
     void setDescription(const string& description);
     void setStageOfApproval(const string& stageOfApproval);
     void setProjectId(const string& ProjectId);
-    void setId(const string& id);
+    void setID(const string& id);
     void setStateOfProgress(const string& stateOfProgress);
     void setExpectedComplexity(const double& expectedComplexity);
     void setValue(const double& value);
@@ -64,7 +64,7 @@ public:
     Lists<string> getDependencies() const;
     string getStageOfApproval() const;
     string getProjectId() const;
-    string getId() const;
+    string getID() const;
     string getStateOfProgress() const;
     double getExpectedComplexity() const;
     double getValue() const;
@@ -73,9 +73,9 @@ public:
     double getTimeRequired() const;
     double getTimeSpent() const;
     //print functions
-    void print() const;
-    void print(const std::string& fileName) const;
-    void print(std::ofstream& out) const;
+    virtual void print() const;
+    virtual void print(const std::string& fileName) const;
+    virtual void print(std::ofstream& out) const;
     //read functions
     void read(const std::string& fileName);
     void read(std::ifstream& in);

@@ -27,7 +27,7 @@ Backlog::~Backlog(){
 //adders and removers
 bool Backlog::addItem(const Item& item){
     if(items.search(item)){
-        cout << "Error: item already exists." << endl;
+        std::cout << "Error: item already exists." << std::endl;
         return false;
     }
     else{
@@ -42,7 +42,7 @@ bool Backlog::editItem(const Item& item){
         return true;
     }
     else{
-        cout << "Error: item does not exist." << endl;
+        std::cout << "Error: item does not exist." << std::endl;
         return false;
     }
 }
@@ -52,13 +52,13 @@ bool Backlog::removeItem(const Item& item){
         return true;
     }
     else{
-        cout << "Error: item does not exist." << endl;
+        std::cout << "Error: item does not exist." << std::endl;
         return false;
     }
 }
 bool Backlog::addEditLogEntry(const EditLog& logEntryID){
     if(editLog.search(logEntryID)){
-        cout << "Error: edit log entry already exists." << endl;
+        std::cout << "Error: edit log entry already exists." << std::endl;
         return false;
     }
     else{
@@ -73,7 +73,7 @@ bool Backlog::editEditLogEntry(const EditLog& logEntryID){
         return true;
     }
     else{
-        cout << "Error: edit log entry does not exist." << endl;
+        std::cout << "Error: edit log entry does not exist." << std::endl;
         return false;
     }
 }
@@ -83,7 +83,7 @@ bool Backlog::removeEditLogEntry(const std::string& logEntryID){
         return true;
     }
     else{
-        cout << "Error: edit log entry does not exist." << endl;
+        std::cout << "Error: edit log entry does not exist." << std::endl;
         return false;
     }
 }
@@ -93,7 +93,7 @@ bool Backlog::removeEditLogEntry(const EditLog& logEntryID){
         return true;
     }
     else{
-        cout << "Error: edit log entry does not exist." << endl;
+        std::cout << "Error: edit log entry does not exist." << std::endl;
         return false;
     }
 }
@@ -152,14 +152,14 @@ Backlog& Backlog::operator+= (const Item& item){
     if(!items.search(item)){
         items.add(item);
     }
-    else cout << "Error: item already exists." << endl;
+    else std::cout << "Error: item already exists." << std::endl;
     return *this;
 }
 Backlog& Backlog::operator-= (const Item& item){
     if(items.search(item)){
         items.remove(item);
     }
-    else cout << "Error: item does not exist." << endl;
+    else std::cout << "Error: item does not exist." << std::endl;
     return *this;
 }
 Backlog& Backlog::operator+= (const Backlog& other){
@@ -183,7 +183,7 @@ Backlog Backlog::operator+ (const Item& item) const{
     if(!temp.items.search(item)){
         temp.items.add(item);
     }
-    else cout << "Error: item already exists." << endl;
+    else std::cout << "Error: item already exists." << std::endl;
     return temp;
 }
 Backlog Backlog::operator- (const Item& item) const{
@@ -191,7 +191,7 @@ Backlog Backlog::operator- (const Item& item) const{
     if(temp.items.search(item)){
         temp.items.remove(item);
     }
-    else cout << "Error: item does not exist." << endl;
+    else std::cout << "Error: item does not exist." << std::endl;
     return temp;
 }
 Backlog Backlog::operator+ (const Backlog& other) const{
@@ -236,14 +236,14 @@ bool Backlog::operator!= (const Backlog& other) const{
 }
 //friend functions
 std::ostream& operator<< (std::ostream& out, const Backlog& backlog){
-    out << "Backlog ID: " << backlog.backlogID << " Owner ID: " << backlog.ownerID << endl;
-    out << "Items: " << endl;
+    out << "Backlog ID: " << backlog.backlogID << " Owner ID: " << backlog.ownerID << std::endl;
+    out << "Items: " << std::endl;
     for(int i=0;i<backlog.items.getSize();i++){
-        out << backlog.items.get(i) << endl;
+        out << backlog.items.get(i) << std::endl;
     }
-    out << "Edit Log: " << endl;
+    out << "Edit Log: " << std::endl;
     for(int i=0;i<backlog.editLog.getSize();i++){
-        out << backlog.editLog.get(i) << endl;
+        out << backlog.editLog.get(i) << std::endl;
     }
     return out;
 }
@@ -255,14 +255,14 @@ std::istream& operator>> (std::istream& in, Backlog& backlog){
     return in;
 }
 std::ofstream& operator<< (std::ofstream& out, const Backlog& backlog){
-    out << backlog.backlogID << " " << backlog.ownerID << endl;
-    out << backlog.items.getSize() << endl;
+    out << backlog.backlogID << " " << backlog.ownerID << std::endl;
+    out << backlog.items.getSize() << std::endl;
     for(int i=0;i<backlog.items.getSize();i++){
-        out << backlog.items.get(i) << endl;
+        out << backlog.items.get(i) << std::endl;
     }
-    out << backlog.editLog.getSize() << endl;
+    out << backlog.editLog.getSize() << std::endl;
     for(int i=0;i<backlog.editLog.getSize();i++){
-        out << backlog.editLog.get(i) << endl;
+        out << backlog.editLog.get(i) << std::endl;
     }
     return out;
 }
@@ -284,21 +284,40 @@ std::ifstream& operator>> (std::ifstream& in, Backlog& backlog){
         in >> temp;
         backlog.editLog.add(temp);
     }
+    return in;
 }
 
 //print functions
 void Backlog::print() const{
-    cout << "Backlog ID: " << backlogID << endl;
-    cout << "Owner ID: " << ownerID << endl;
-    cout << "Items: " << endl;
+    std::cout << "Backlog ID: " << backlogID << std::endl;
+    std::cout << "Owner ID: " << ownerID << std::endl;
+    std::cout << "Items: " << std::endl;
     for(int i=0;i<items.getSize();i++){
-        cout << items.get(i) << endl;
+        std::cout << items.get(i) << std::endl;
     }
-    cout << "Edit Log: " << endl;
+    std::cout << "Edit Log: " << std::endl;
     for(int i=0;i<editLog.getSize();i++){
-        cout << editLog.get(i) << endl;
+        std::cout << editLog.get(i) << std::endl;
     }
 }
+void Backlog::print(std::ofstream& out) const{
+    out << "Backlog ID: " << backlogID << std::endl;
+    out << "Owner ID: " << ownerID << std::endl;
+    out << "Items: " << std::endl;
+    for(int i=0;i<items.getSize();i++){
+        out << items.get(i) << std::endl;
+    }
+    out << "Edit Log: " << std::endl;
+    for(int i=0;i<editLog.getSize();i++){
+        out << editLog.get(i) << std::endl;
+    }
+}
+void Backlog::print(std::string fileName) const{
+    std::ofstream out(fileName);
+    print(out);
+    out.close();
+}
+
 
 //virtual function
 void Backlog::finish(Backlog& decendent){

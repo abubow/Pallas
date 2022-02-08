@@ -228,18 +228,17 @@ void Lists<T>::print(const std::string& filename) const
 {
     std::ofstream file;
     file.open(filename);
-    for (int i = 0; i < size; i++)
-    {
-        file << (*this)[i] << " ";
-    }
+    print(file);
     file.close();
 }
 
 template <class T>
-void Lists<T>::print(std::ofstream& out) const{
+void Lists<T>::print(std::ofstream& out) const
+{
+    out << size << std::endl;
     for (int i = 0; i < size; i++)
     {
-        out << list[i] << " ";
+        out << (*this)[i] << " ";
     }
 }
 
@@ -371,6 +370,119 @@ std::ifstream& operator>>(std::ifstream& in, Lists<T>& list)
     return in;
 }
 
+//type conversion operator overloads
+template <class T>
+Lists<T>::operator std::string() const
+{
+    std::string str = "";
+    for (int i = 0; i < size; i++)
+    {
+        str += list[i];
+    }
+    return str;
+}
+/*
+template <class T>
+Lists<T>::operator T*() const
+{
+    return list;
+}
+template <class T>
+Lists<T>::operator const T*() const
+{
+    return list;
+}
+template <class T>
+Lists<T>::operator T&() const
+{
+    return list[0];
+}
+template <class T>
+Lists<T>::operator const T&() const
+{
+    return list[0];
+}
+template <class T>
+Lists<T>::operator T() const
+{
+    return list[0];
+}
+template <class T>
+Lists<T>::operator const T() const
+{
+    return list[0];
+}
+template <class T>
+Lists<T>::operator int() const
+{
+    return size;
+}
+template <class T>
+Lists<T>::operator const int() const
+{
+    return size;
+}
+template <class T>
+Lists<T>::operator bool() const
+{
+    return size > 0;
+}
+template <class T>
+Lists<T>::operator const bool() const
+{
+    return size > 0;
+}
+template <class T>
+Lists<T>::operator double() const
+{
+    return size;
+}
+template <class T>
+Lists<T>::operator const double() const
+{
+    return size;
+}
+template <class T>
+Lists<T>::operator float() const
+{
+    return size;
+}
+template <class T>
+Lists<T>::operator const float() const
+{
+    return size;
+}
+template <class T>
+Lists<T>::operator long() const
+{
+    return size;
+}
+template <class T>
+Lists<T>::operator const long() const
+{
+    return size;
+}
+template <class T>
+Lists<T>::operator short() const
+{
+    return size;
+}
+template <class T>
+Lists<T>::operator const short() const
+{
+    return size;
+}
+template <class T>
+Lists<T>::operator const std::string() const
+{
+    std::string str = "";
+    for (int i = 0; i < size; i++)
+    {
+        str += list[i];
+    }
+    return str;
+}
+*/
 //search functions
 template <class T>
 bool Lists<T>::search(const T& item) const
@@ -723,7 +835,7 @@ Lists<T>& Lists<T>::operator- (const T* items) const
 template <class T>
 std::string Lists<T>::toString() const
 {
-    stringstream ss;
+    std::stringstream ss;
     ss << "{";
     for (int i = 0; i < size; i++)
     {

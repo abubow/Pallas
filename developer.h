@@ -18,7 +18,6 @@ class Developer :
 	string* listOfAssignedProjects;
 	int assignedProjectCount;
 public:
-
 	Developer();
 	Developer(const Developer&);
 	Developer(const string& name, const string& email, const string& password, const string& username, const string& phone, const string& description, const string& experience, const string& pfpURL, const string& memberID, double xp, double workPerWeek, const string& teamID);
@@ -65,7 +64,7 @@ public:
 	bool searchAssignedItem(const string& itemID);
 	bool searchAssignedProject(const string& projectID);
 	//developer functions
-	bool changeItemStatus(SprintBacklog& item);
+	bool changeItemStatus(SprintBacklog& backlog, const string& status, const string& itemID);
 	//other functions
 	string getMemberInfo() const override;
 };

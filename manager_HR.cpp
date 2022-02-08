@@ -405,6 +405,108 @@ bool Manager_HR::searchAssignedProject(const string& assignedProject) const
     }
     return false;
 }
+//Manager Functions
+/*
+template<class T>
+bool Manager_HR::addMember(DataManagementSystem& database, T& member)
+{
+    if(member.getID() == ""|| member.getName() == "" || member.getAddress() == "" || member.getPhoneNumber() == "" || member.getEmail() == "" || member.getDateOfBirth() == "" || member.getDateOfEmployment() == "" || member.getSalary() == 0 || member.getTitle() == "" || member.getDepartment() == "" || member.getAssignedTeamCount() == 0 || member.getAssignedProjectCount() == 0)
+    {
+        std::cout << "Invalid input, input cannot be empty" << endl;
+        return false;
+    }
+    if (typeid(member).name() == typeid(Manager_HR).name()){
+        database.addManager_HR(member);
+        return true;
+    }
+    else if(typeid(member).name() == typeid(Administrator).name()){
+        database.addAdministrator(member);
+        return true;
+    }
+    else if(typeid(member).name() == typeid(Developer).name()){
+        database.addDeveloper(member);
+        return true;
+    }
+    else if(typeid(member).name() == typeid(ProductOwner).name()){
+        database.addProductOwner(member);
+        return true;
+    }
+    else if(typeid(member).name() == typeid(Testor).name()){
+        database.addTestor(member);
+        return true;
+    }
+    else{
+        cout << "Invalid input, member type not found" << endl;
+        return false;
+    }
+}
+template<class T>
+bool Manager_HR::removeMember(DataManagementSystem& database, T& member)
+{
+    if(member.getID() == ""|| member.getName() == "" || member.getAddress() == "" || member.getPhoneNumber() == "" || member.getEmail() == "" || member.getDateOfBirth() == "" || member.getDateOfEmployment() == "" || member.getSalary() == 0 || member.getTitle() == "" || member.getDepartment() == "" || member.getAssignedTeamCount() == 0 || member.getAssignedProjectCount() == 0)
+    {
+        std::cout << "Invalid input, input cannot be empty" << endl;
+        return false;
+    }
+    if (typeid(member).name() == typeid(Manager_HR).name()){
+        database.removeManager_HR(member);
+        return true;
+    }
+    else if(typeid(member).name() == typeid(Administrator).name()){
+        database.removeAdministrator(member);
+        return true;
+    }
+    else if(typeid(member).name() == typeid(Developer).name()){
+        database.removeDeveloper(member);
+        return true;
+    }
+    else if(typeid(member).name() == typeid(ProductOwner).name()){
+        database.removeProductOwner(member);
+        return true;
+    }
+    else if(typeid(member).name() == typeid(Testor).name()){
+        database.removeTestor(member);
+        return true;
+    }
+    else{
+        cout << "Invalid input, member type not found" << endl;
+        return false;
+    }
+}
+template<class T>
+bool Manager_HR::editMember(DataManagementSystem& database, T& member)
+{
+    if(member.getID() == ""|| member.getName() == "" || member.getAddress() == "" || member.getPhoneNumber() == "" || member.getEmail() == "" || member.getDateOfBirth() == "" || member.getDateOfEmployment() == "" || member.getSalary() == 0 || member.getTitle() == "" || member.getDepartment() == "" || member.getAssignedTeamCount() == 0 || member.getAssignedProjectCount() == 0)
+    {
+        std::cout << "Invalid input, input cannot be empty" << endl;
+        return false;
+    }
+    if (typeid(member).name() == typeid(Manager_HR).name()){
+        database.editManager_HR(member);
+        return true;
+    }
+    else if(typeid(member).name() == typeid(Administrator).name()){
+        database.editAdministrator(member);
+        return true;
+    }
+    else if(typeid(member).name() == typeid(Developer).name()){
+        database.editDeveloper(member);
+        return true;
+    }
+    else if(typeid(member).name() == typeid(ProductOwner).name()){
+        database.editProductOwner(member);
+        return true;
+    }
+    else if(typeid(member).name() == typeid(Testor).name()){
+        database.editTestor(member);
+        return true;
+    }
+    else{
+        cout << "Invalid input, member type not found" << endl;
+        return false;
+    }
+}
+*/
 //other functions
 string Manager_HR::getMemberInfo() const
 {

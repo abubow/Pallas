@@ -368,6 +368,41 @@ bool Developer::searchAssignedProject(const string& projectID)
     }
     return false;
 }
+//developer specific functions
+bool Developer::changeItemStatus(SprintBacklog& backlog, const string& newStatus, const string& itemID)
+{
+    if(backlog.searchItem(itemID))
+    {
+        if(newStatus == "TODO" || newStatus == "BUILD" || newStatus == "TEST")
+        {
+            if(searchAssignedItem(itemID))
+            {
+                for (int i = 0; i < backlog.getItems().getSize(); i++)
+                {
+                    if (backlog.getItems()[i].getID() == itemID)
+                    {
+                        backlog.getItems()[i].setStateOfProgress(newStatus);
+                    }
+                }
+            }
+            else
+            {
+                cout << "Item is not assigned to this developer" << endl;
+                return false;
+            }
+        }
+        else
+        {
+            cout << "Invalid status value: " << newStatus << endl;
+            return false;
+        }
+    }
+    else
+    {
+        cout << "Item does not exist" << endl;
+        return false;
+    }
+}
 //other functions
 string Developer::getMemberInfo() const
 {

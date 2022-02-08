@@ -177,7 +177,7 @@ void Item::setProjectId(const string& ProjectId){
     this->ProjectId=ProjectId;
 }
 
-void Item::setId(const string& itemId){
+void Item::setID(const string& itemId){
     this->itemId=itemId;
 }
 
@@ -226,7 +226,7 @@ string Item::getProjectId() const{
     return ProjectId;
 }
 
-string Item::getId() const{
+string Item::getID() const{
     return itemId;
 }
 

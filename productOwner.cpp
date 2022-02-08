@@ -9,7 +9,7 @@ ProductOwner::ProductOwner():
 ProductOwner::ProductOwner(const ProductOwner& po):
     Member(po)
 {
-    type = "NORMAL";
+    type = po.type;
 }
 
 ProductOwner::ProductOwner(const string& name, const string& email, const string& password, const string& username, const string& phone, const string& description, const string& experience, const string& pfpURL, const string& memberID, const string& type):
@@ -174,6 +174,106 @@ bool ProductOwner::operator!=(const ProductOwner& po) const
 {
     return !(*this == po);
 }
+//adders and removers
+bool ProductOwner::addAssignedTeam(const string& teamID)
+{
+    if(teams.search(teamID))
+    {
+        assignedTeams.add(teamID);
+        return true;
+    }
+    else
+    {
+        cout << "Team already exist." << endl;
+        return false;
+    }
+}
+
+bool ProductOwner::removeAssignedTeam(const string& teamID)
+{
+    if(assignedTeams.search(teamID))
+    {
+        assignedTeams.remove(teamID);
+        return true;
+    }
+    else
+    {
+        cout << "Team does not exist." << endl;
+        return false;
+    }
+}
+
+bool ProductOwner::editAssignedTeam(const string& teamID){
+    if(assignedTeams.search(teamID))
+    {
+        assignedTeams.remove(teamID);
+        assignedTeams.add(teamID);
+        return true;
+    }
+    else
+    {
+        cout << "Team does not exist." << endl;
+        return false;
+    }
+}
+
+bool ProductOwner::addAssignedProject(const string& projectID)
+{
+    if(teams.search(projectID))
+    {
+        assignedProjects.add(projectID);
+        return true;
+    }
+    else
+    {
+        cout << "Project already exist." << endl;
+        return false;
+    }
+}
+
+bool ProductOwner::removeAssignedProject(const string& projectID)
+{
+    if(assignedProjects.search(projectID))
+    {
+        assignedProjects.remove(projectID);
+        return true;
+    }
+    else
+    {
+        cout << "Project does not exist." << endl;
+        return false;
+    }
+}
+
+bool ProductOwner::editAssignedProject(const string& projectID){
+    if(assignedProjects.search(projectID))
+    {
+        assignedProjects.remove(projectID);
+        assignedProjects.add(projectID);
+        return true;
+    }
+    else
+    {
+        cout << "Project does not exist." << endl;
+        return false;
+    }
+}
+
+bool ProductOwner::addEditLogEntry(const EditLog& editLog)
+{
+    if(searchEditLog(editLog.getID()))
+    {
+        cout << "Edit log entry already exist." << endl;
+        return false;
+    }
+    else
+    {
+        this->editLog.add(editLog);
+        return true;
+    }
+}
+
+
 //destructor
 ProductOwner::~ProductOwner()
 {

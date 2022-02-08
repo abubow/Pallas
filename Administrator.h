@@ -2,9 +2,6 @@
 #define ADMINISTRATOR_H
 #pragma once
 #include "member.h"
-#include "DataManagementSystem.h"
-extern class RoadMapMangementSystem;
-extern class RoadMap;
 class Administrator :
     public Member
 {
@@ -20,7 +17,7 @@ public:
     ~Administrator();
     //adders and removers
     bool addEditLog(const string& editLog);
-    bool editEditLog(const string& editLogID);
+    //bool editEditLog(const string& editLogID);
     bool removeEditLog(const string& editLog);
     //getters
     const string* getEditLog() const;

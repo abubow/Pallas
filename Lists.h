@@ -4,7 +4,7 @@
 #include <iostream>
 #include <fstream>
 #include <string>
-template <typename T>
+template <class T>
 class Lists
 {
 protected:
@@ -66,7 +66,32 @@ public:
     friend std::istream& operator>>(std::istream& in, Lists& list);
     friend std::ifstream& operator>>(std::ifstream& in, Lists& list);
     //type conversion operator overloads
+    operator std::string() const;
+    /*
     operator T*() const;
+    operator const T*() const;
+    operator T&() const;
+    operator const T&() const;
+    operator T() const;
+    operator const T() const;
+    operator const std::string() const;
+    operator int() const;
+    operator float() const;
+    operator double() const;
+    operator bool() const;
+    operator const long() const;
+    operator long() const;
+    operator const short() const;
+    operator short() const;
+    operator const double() const;
+    operator double() const;
+    operator const float() const;
+    operator float() const;
+    operator const int() const;
+    operator int() const;
+    operator const bool() const;
+    operator bool() const;
+    */
     //search functions
     bool search(const T&) const;
     bool search(const T*, int) const;
@@ -98,15 +123,17 @@ inline bool searchInListByID(const Lists<T> item, const std::string& itemID){
             break;
         }
     }
+    return found;
 }
 //remove by ID
 template<class T>
 inline void removeFromListByID(Lists<T>& item, const std::string& itemID){
     for(int i=0;i<item.getSize();i++){
         if(item.get(i).getID()==itemID){
-            item.remove(i);
+            item.remove(item.get(i));
             break;
         }
     }
 }
+
 #endif // !LIST_H
